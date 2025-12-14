@@ -70,10 +70,109 @@ class _AppPageState extends State<AppPage> {
     }
 
     if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
-    return Center(child: Text("You are logged in"));
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home')),
+      drawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.home),
+                      title: const Text('Home'),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        // Routefly.navigate(routePaths.index);
+                      },
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.event),
+                      title: const Text('Events'),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Events page not added yet'),
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.add),
+                      title: const Text('Add event'),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Add event page not added yet'),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.person, color: Color(0xFF808080)),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'Logged in as ${FirebaseAuth.instance.currentUser?.email ?? ''}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF808080),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: TextButton(
+                  onPressed: () async {
+                    try {
+                      await FirebaseAuth.instance.signOut();
+                    } catch (e) {
+                      if (!context.mounted) return;
+                      showDialog(
+                        context: context,
+                        builder: (_) =>
+                            AlertDialog(content: Text('Error signing out: $e')),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    'Sign out',
+                    style: TextStyle(
+                      color: Color(0xFF007BFF),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: const Center(child: Text('You are logged in')),
+    );
   }
 }
 
