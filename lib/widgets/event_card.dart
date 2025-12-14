@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:judging_app/app/app_widget.dart';
 import 'package:judging_app/helpers/types.dart';
+import 'package:routefly/routefly.dart';
 
 class EventCard extends StatefulWidget {
   final Event event;
@@ -106,9 +108,11 @@ class _EventCardState extends State<EventCard> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/comments/${widget.event.id}',
+                    Routefly.push(
+                      routePaths.comments.$id.comments.replaceFirst(
+                        '[id]',
+                        widget.event.id,
+                      ),
                     );
                   },
                   child: const Text(

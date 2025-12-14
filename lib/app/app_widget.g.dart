@@ -4,28 +4,37 @@ part of 'app_widget.dart';
 
 List<RouteEntity> get routes => [
   RouteEntity(
-    key: '/signup',
-    uri: Uri.parse('/signup'),
+    key: '/comments/[id]/comments',
+    uri: Uri.parse('/comments/[id]/comments'),
     routeBuilder: b0Builder,
   ),
-  RouteEntity(key: '/reset', uri: Uri.parse('/reset'), routeBuilder: b1Builder),
-  RouteEntity(key: '/login', uri: Uri.parse('/login'), routeBuilder: b2Builder),
+  RouteEntity(
+    key: '/signup',
+    uri: Uri.parse('/signup'),
+    routeBuilder: b1Builder,
+  ),
+  RouteEntity(key: '/reset', uri: Uri.parse('/reset'), routeBuilder: b2Builder),
+  RouteEntity(key: '/login', uri: Uri.parse('/login'), routeBuilder: b3Builder),
   RouteEntity(
     key: '/internal/home',
     parent: '/internal',
     uri: Uri.parse('/internal/home'),
-    routeBuilder: b3Builder,
+    routeBuilder: b4Builder,
   ),
   RouteEntity(
     key: '/internal',
     uri: Uri.parse('/internal'),
-    routeBuilder: b4Builder,
+    routeBuilder: b5Builder,
   ),
-  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b5Builder),
+  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b6Builder),
 ];
 
 const routePaths = (
   path: '/',
+  comments: (
+    path: '/comments',
+    $id: (path: '/comments/[id]', comments: '/comments/[id]/comments'),
+  ),
   signup: '/signup',
   reset: '/reset',
   login: '/login',

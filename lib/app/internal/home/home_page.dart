@@ -166,7 +166,6 @@ class _EventsTabState extends State<_EventsTab> {
               _ensureUserScoreListener(event);
             }
 
-            // Remove rows/subscriptions for deleted events.
             final toRemove = _rowsById.keys
                 .where((id) => !currentIds.contains(id))
                 .toList();
@@ -206,7 +205,6 @@ class _EventsTabState extends State<_EventsTab> {
         if (map == null) return;
         data = UserEventData.fromMap(map);
       } else {
-        // Create a zero-score doc so the rankings page has something to display.
         final initialScores = {for (final c in event.criteria) c: 0};
         await ref.set({'scores': initialScores, 'comments': []});
         data = UserEventData(scores: initialScores);
@@ -241,7 +239,6 @@ class _EventsTabState extends State<_EventsTab> {
     final aData = a.userData;
     final bData = b.userData;
 
-    // If user data hasn't arrived yet, keep stable but push nulls down.
     if (aData == null && bData == null) return 0;
     if (aData == null) return 1;
     if (bData == null) return -1;

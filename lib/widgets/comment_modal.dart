@@ -70,8 +70,6 @@ class _CommentDialogState extends State<_CommentDialog> {
 
   @override
   Widget build(BuildContext context) {
-    // Keep the dialog visually stable when the keyboard appears.
-    // This intentionally ignores the bottom viewInsets so the dialog does not jump.
     return MediaQuery.removeViewInsets(
       context: context,
       removeBottom: true,
