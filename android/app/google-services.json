@@ -1,0 +1,125 @@
+{
+  "project_info": {
+    "project_number": "787942516027",
+    "firebase_url": "https://judging-app-12220-default-rtdb.firebaseio.com",
+    "project_id": "judging-app-12220",
+    "storage_bucket": "judging-app-12220.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787942516027:android:c5fde565e080f60f8a431e",
+        "android_client_info": {
+          "package_name": "com.example.fluttertest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZMZwnU3rnKKNfX_xDIUXVfk1o6bzqSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787942516027:android:d138df278889cc068a431e",
+        "android_client_info": {
+          "package_name": "com.example.judging_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZMZwnU3rnKKNfX_xDIUXVfk1o6bzqSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787942516027:android:8dba70cead21a5778a431e",
+        "android_client_info": {
+          "package_name": "com.fluttertest.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZMZwnU3rnKKNfX_xDIUXVfk1o6bzqSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787942516027:android:7365f86e5163fda38a431e",
+        "android_client_info": {
+          "package_name": "com.judging.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZMZwnU3rnKKNfX_xDIUXVfk1o6bzqSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787942516027:android:2fccb0dec32383b98a431e",
+        "android_client_info": {
+          "package_name": "com.judgingapp.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZMZwnU3rnKKNfX_xDIUXVfk1o6bzqSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787942516027:android:4268b8a44b4a13e88a431e",
+        "android_client_info": {
+          "package_name": "gsu.judging.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZMZwnU3rnKKNfX_xDIUXVfk1o6bzqSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
