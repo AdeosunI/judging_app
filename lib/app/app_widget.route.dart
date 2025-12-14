@@ -17,7 +17,7 @@ Route b1Builder(BuildContext ctx, RouteSettings settings) =>
 Route b2Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a2.LoginPage());
 Route b3Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a3.MainPage());
+    Routefly.defaultRouteBuilder(ctx, settings, const a3.HomePage());
 Route b4Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a4.InternalLayout());
 Route b5Builder(BuildContext ctx, RouteSettings settings) =>

@@ -1,79 +1,117 @@
-import 'dart:async';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:routefly/routefly.dart';
-import 'package:judging_app/app/app_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:judging_app/helpers/firestore_collections.dart';
+import 'package:judging_app/helpers/types.dart';
+import 'package:judging_app/widgets/event_voting_card.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MainPageState extends State<MainPage> {
-  late final StreamSubscription<User?> _sub;
-  bool _isLoading = true;
+class _HomePageState extends State<HomePage> {
+  int _index = 0;
 
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: IndexedStack(
+            index: _index,
+            children: const [_VotingTab(), _EventsTab()],
+          ),
+        ),
+        NavigationBar(
+          selectedIndex: _index,
+          onDestinationSelected: (i) => setState(() => _index = i),
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.how_to_vote_outlined),
+              selectedIcon: Icon(Icons.how_to_vote),
+              label: 'Voting',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.calendar_today_outlined),
+              selectedIcon: Icon(Icons.calendar_today),
+              label: 'Events',
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
 
-    _sub = FirebaseAuth.instance.authStateChanges().listen(
-      (user) {
-        final isLoggedIn = user != null;
+class _VotingTab extends StatelessWidget {
+  const _VotingTab();
 
-        if (!isLoggedIn) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Routefly.pushNavigate(routePaths.login);
-          });
+  @override
+  Widget build(BuildContext context) {
+    final stream = FirebaseFirestore.instance
+        .collection(eventsCollection)
+        .snapshots();
+
+    return StreamBuilder<QuerySnapshot>(
+      stream: stream,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Text('Something went wrong loading events.'),
+            ),
+          );
         }
 
-        setState(() {
-          _isLoading = false;
-        });
-      },
-      onError: (_) {
-        setState(() {
-          _isLoading = true;
-        });
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final docs = snapshot.data?.docs ?? const [];
+
+        if (docs.isEmpty) {
+          return const Padding(
+            padding: EdgeInsets.all(16),
+            child: Center(
+              child: Text(
+                'There are no events to vote on yet. Go to the settings page to add events.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF333333),
+                ),
+              ),
+            ),
+          );
+        }
+
+        final events = docs.map((d) => Event.fromFirestore(d)).toList();
+
+        return ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: events.length,
+          itemBuilder: (context, index) {
+            return EventVotingCard(event: events[index]);
+          },
+        );
       },
     );
   }
-
-  @override
-  void dispose() {
-    _sub.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_isLoading) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
-
-    return Text("home");
-  }
 }
 
-class OfflineScreen extends StatelessWidget {
-  const OfflineScreen({super.key});
+class _EventsTab extends StatelessWidget {
+  const _EventsTab();
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFFF9F9F9),
-      body: Center(
-        child: Text(
-          'You need to connect to the internet.',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF333333),
-          ),
-        ),
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Text('Events tab (placeholder)'),
       ),
     );
   }

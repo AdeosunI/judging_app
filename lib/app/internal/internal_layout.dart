@@ -162,7 +162,7 @@ class _InternalLayoutState extends State<InternalLayout> {
           ),
         ),
       ),
-      body: SafeArea(child: Expanded(child: RouterOutlet())),
+      body: SafeArea(child: RouterOutlet()),
     );
   }
 }
