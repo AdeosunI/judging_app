@@ -108,28 +108,34 @@ class _InternalLayoutState extends State<InternalLayout> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.person, color: Color(0xFF808080)),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'Logged in as ${FirebaseAuth.instance.currentUser?.email ?? ''}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF808080),
+              InkWell(
+                onTap: () {
+                  Routefly.push(routePaths.userDetails);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.person, color: Color(0xFF808080)),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Logged in as ${FirebaseAuth.instance.currentUser?.email ?? ''}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF808080),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      const Icon(Icons.chevron_right, color: Color(0xFFB0B0B0)),
+                    ],
+                  ),
                 ),
               ),
               Padding(

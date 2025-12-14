@@ -3,25 +3,28 @@
 import 'package:flutter/widgets.dart';
 import 'package:routefly/routefly.dart';
 
-import '(login)/login/login_page.dart' as a3;
-import '(login)/reset/reset_page.dart' as a2;
-import '(login)/signup/signup_page.dart' as a1;
-import 'app_page.dart' as a6;
+import '(login)/login/login_page.dart' as a4;
+import '(login)/reset/reset_page.dart' as a3;
+import '(login)/signup/signup_page.dart' as a2;
+import 'app_page.dart' as a7;
 import 'comments/[id]/comments_page.dart' as a0;
-import 'internal/home/home_page.dart' as a4;
-import 'internal/internal_layout.dart' as a5;
+import 'internal/home/home_page.dart' as a5;
+import 'internal/internal_layout.dart' as a6;
+import 'user_details/user_details_page.dart' as a1;
 
 Route b0Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a0.AppPage());
 Route b1Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a1.SignupPage());
+    Routefly.defaultRouteBuilder(ctx, settings, const a1.UserDetailsPage());
 Route b2Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a2.ResetPage());
+    Routefly.defaultRouteBuilder(ctx, settings, const a2.SignupPage());
 Route b3Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a3.LoginPage());
+    Routefly.defaultRouteBuilder(ctx, settings, const a3.ResetPage());
 Route b4Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a4.HomePage());
+    Routefly.defaultRouteBuilder(ctx, settings, const a4.LoginPage());
 Route b5Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a5.InternalLayout());
+    Routefly.defaultRouteBuilder(ctx, settings, const a5.HomePage());
 Route b6Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a6.AppPage());
+    Routefly.defaultRouteBuilder(ctx, settings, const a6.InternalLayout());
+Route b7Builder(BuildContext ctx, RouteSettings settings) =>
+    Routefly.defaultRouteBuilder(ctx, settings, const a7.AppPage());

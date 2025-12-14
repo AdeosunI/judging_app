@@ -9,24 +9,29 @@ List<RouteEntity> get routes => [
     routeBuilder: b0Builder,
   ),
   RouteEntity(
-    key: '/signup',
-    uri: Uri.parse('/signup'),
+    key: '/user_details',
+    uri: Uri.parse('/user_details'),
     routeBuilder: b1Builder,
   ),
-  RouteEntity(key: '/reset', uri: Uri.parse('/reset'), routeBuilder: b2Builder),
-  RouteEntity(key: '/login', uri: Uri.parse('/login'), routeBuilder: b3Builder),
+  RouteEntity(
+    key: '/signup',
+    uri: Uri.parse('/signup'),
+    routeBuilder: b2Builder,
+  ),
+  RouteEntity(key: '/reset', uri: Uri.parse('/reset'), routeBuilder: b3Builder),
+  RouteEntity(key: '/login', uri: Uri.parse('/login'), routeBuilder: b4Builder),
   RouteEntity(
     key: '/internal/home',
     parent: '/internal',
     uri: Uri.parse('/internal/home'),
-    routeBuilder: b4Builder,
+    routeBuilder: b5Builder,
   ),
   RouteEntity(
     key: '/internal',
     uri: Uri.parse('/internal'),
-    routeBuilder: b5Builder,
+    routeBuilder: b6Builder,
   ),
-  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b6Builder),
+  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b7Builder),
 ];
 
 const routePaths = (
@@ -35,6 +40,7 @@ const routePaths = (
     path: '/comments',
     $id: (path: '/comments/[id]', comments: '/comments/[id]/comments'),
   ),
+  userDetails: '/user_details',
   signup: '/signup',
   reset: '/reset',
   login: '/login',
