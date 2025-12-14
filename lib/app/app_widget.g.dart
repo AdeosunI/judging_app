@@ -10,7 +10,18 @@ List<RouteEntity> get routes => [
   ),
   RouteEntity(key: '/reset', uri: Uri.parse('/reset'), routeBuilder: b1Builder),
   RouteEntity(key: '/login', uri: Uri.parse('/login'), routeBuilder: b2Builder),
-  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b3Builder),
+  RouteEntity(
+    key: '/internal/home',
+    parent: '/internal',
+    uri: Uri.parse('/internal/home'),
+    routeBuilder: b3Builder,
+  ),
+  RouteEntity(
+    key: '/internal',
+    uri: Uri.parse('/internal'),
+    routeBuilder: b4Builder,
+  ),
+  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b5Builder),
 ];
 
 const routePaths = (
@@ -18,4 +29,5 @@ const routePaths = (
   signup: '/signup',
   reset: '/reset',
   login: '/login',
+  internal: (path: '/internal', home: '/internal/home'),
 );

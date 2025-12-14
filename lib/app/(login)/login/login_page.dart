@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:judging_app/app/app_widget.dart';
 import 'package:routefly/routefly.dart';
 import 'package:judging_app/helpers/handle_auth_error.dart';
 
@@ -31,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       if (!mounted) return;
-      Routefly.replace('/app');
+      Routefly.replace(routePaths.internal.home);
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
       _handleAuthError(e.code);

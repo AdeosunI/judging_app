@@ -6,7 +6,9 @@ import 'package:routefly/routefly.dart';
 import '(login)/login/login_page.dart' as a2;
 import '(login)/reset/reset_page.dart' as a1;
 import '(login)/signup/signup_page.dart' as a0;
-import 'app_page.dart' as a3;
+import 'app_page.dart' as a5;
+import 'internal/home/home_page.dart' as a3;
+import 'internal/internal_layout.dart' as a4;
 
 Route b0Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a0.SignupPage());
@@ -15,4 +17,8 @@ Route b1Builder(BuildContext ctx, RouteSettings settings) =>
 Route b2Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a2.LoginPage());
 Route b3Builder(BuildContext ctx, RouteSettings settings) =>
-    Routefly.defaultRouteBuilder(ctx, settings, const a3.AppPage());
+    Routefly.defaultRouteBuilder(ctx, settings, const a3.MainPage());
+Route b4Builder(BuildContext ctx, RouteSettings settings) =>
+    Routefly.defaultRouteBuilder(ctx, settings, const a4.InternalLayout());
+Route b5Builder(BuildContext ctx, RouteSettings settings) =>
+    Routefly.defaultRouteBuilder(ctx, settings, const a5.AppPage());
