@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:judging_app/helpers/dates.dart';
 import 'package:judging_app/helpers/firestore_collections.dart';
 import 'package:judging_app/helpers/types.dart';
 import 'comment_modal.dart';
@@ -120,7 +121,7 @@ class _EventVotingCardState extends State<EventVotingCard> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Date: ${_formatDate(widget.event.eventDate.toDate())}',
+                  'Date: ${formatDate(widget.event.eventDate.toDate())}',
                   style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
                 const SizedBox(height: 12),
@@ -164,7 +165,7 @@ class _EventVotingCardState extends State<EventVotingCard> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${_capitalize(criterion)}: $score',
+          '${criterion.capitalize()}: $score',
           style: const TextStyle(fontSize: 16),
         ),
         Slider(
@@ -188,40 +189,10 @@ class _EventVotingCardState extends State<EventVotingCard> {
       ],
     );
   }
+}
 
-  String _capitalize(String value) {
-    if (value.isEmpty) return value;
-    return value[0].toUpperCase() + value.substring(1);
-  }
-
-  String _formatDate(DateTime date) {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-
-    const weekdays = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ];
-
-    return '${weekdays[date.weekday - 1]}, '
-        '${months[date.month - 1]} '
-        '${date.day}, ${date.year}';
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }

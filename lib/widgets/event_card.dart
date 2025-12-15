@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:judging_app/app/app_widget.dart';
+import 'package:judging_app/helpers/dates.dart';
 import 'package:judging_app/helpers/types.dart';
 import 'package:routefly/routefly.dart';
 
@@ -151,7 +152,7 @@ class _EventCardState extends State<EventCard> {
         Text(widget.event.eventDesc, style: const TextStyle(fontSize: 14)),
         const SizedBox(height: 12),
         Text(
-          'Event Date: ${_formatDate(widget.event.eventDate.toDate())}',
+          'Event Date: ${formatDate(widget.event.eventDate.toDate())}',
           style: const TextStyle(fontSize: 14),
         ),
         const SizedBox(height: 12),
@@ -181,36 +182,5 @@ class _EventCardState extends State<EventCard> {
         ),
       ],
     );
-  }
-
-  String _formatDate(DateTime date) {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-
-    const weekdays = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ];
-
-    return '${weekdays[date.weekday - 1]}, '
-        '${months[date.month - 1]} '
-        '${date.day}, ${date.year}';
   }
 }
