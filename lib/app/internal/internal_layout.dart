@@ -109,11 +109,9 @@ class _InternalLayoutState extends State<InternalLayout> {
                           _title = 'Add event';
                         });
                         Navigator.of(context).pop();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Add event page not added yet'),
-                          ),
-                        );
+                        Future.microtask(() {
+                          Routefly.push(routePaths.internal.addEvents);
+                        });
                       },
                     ),
                   ],

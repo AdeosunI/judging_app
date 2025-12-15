@@ -37,6 +37,12 @@ List<RouteEntity> get routes => [
     uri: Uri.parse('/internal/aggregate_events'),
     routeBuilder: b7Builder,
   ),
+  RouteEntity(
+    key: '/internal/add_events',
+    parent: '/internal',
+    uri: Uri.parse('/internal/add_events'),
+    routeBuilder: b8Builder,
+  ),
   RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b9Builder),
 ];
 
@@ -54,5 +60,6 @@ const routePaths = (
     path: '/internal',
     home: '/internal/home',
     aggregateEvents: '/internal/aggregate_events',
+    addEvents: '/internal/add_events',
   ),
 );
