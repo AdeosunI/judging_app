@@ -31,7 +31,13 @@ List<RouteEntity> get routes => [
     uri: Uri.parse('/internal'),
     routeBuilder: b6Builder,
   ),
-  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b7Builder),
+  RouteEntity(
+    key: '/internal/aggregate_events',
+    parent: '/internal',
+    uri: Uri.parse('/internal/aggregate_events'),
+    routeBuilder: b7Builder,
+  ),
+  RouteEntity(key: '/', uri: Uri.parse('/'), routeBuilder: b9Builder),
 ];
 
 const routePaths = (
@@ -44,5 +50,9 @@ const routePaths = (
   signup: '/signup',
   reset: '/reset',
   login: '/login',
-  internal: (path: '/internal', home: '/internal/home'),
+  internal: (
+    path: '/internal',
+    home: '/internal/home',
+    aggregateEvents: '/internal/aggregate_events',
+  ),
 );

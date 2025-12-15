@@ -6,8 +6,9 @@ import 'package:routefly/routefly.dart';
 import '(login)/login/login_page.dart' as a4;
 import '(login)/reset/reset_page.dart' as a3;
 import '(login)/signup/signup_page.dart' as a2;
-import 'app_page.dart' as a7;
+import 'app_page.dart' as a9;
 import 'comments/[id]/comments_page.dart' as a0;
+import 'internal/aggregate_events/aggregate_events_page.dart' as a7;
 import 'internal/home/home_page.dart' as a5;
 import 'internal/internal_layout.dart' as a6;
 import 'user_details/user_details_page.dart' as a1;
@@ -28,3 +29,5 @@ Route b6Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a6.InternalLayout());
 Route b7Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a7.AppPage());
+Route b9Builder(BuildContext ctx, RouteSettings settings) =>
+    Routefly.defaultRouteBuilder(ctx, settings, const a9.AppPage());

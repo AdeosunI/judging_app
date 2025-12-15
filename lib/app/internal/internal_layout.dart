@@ -16,6 +16,7 @@ class _InternalLayoutState extends State<InternalLayout> {
   late final StreamSubscription<User?> _sub;
   bool _isLoading = true;
   bool _didRedirectToLogin = false;
+  String _title = 'Home';
 
   @override
   void initState() {
@@ -65,7 +66,7 @@ class _InternalLayoutState extends State<InternalLayout> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(title: Text(_title)),
       drawer: Drawer(
         child: SafeArea(
           child: Column(
@@ -78,25 +79,35 @@ class _InternalLayoutState extends State<InternalLayout> {
                       leading: const Icon(Icons.home),
                       title: const Text('Home'),
                       onTap: () {
+                        setState(() {
+                          _title = 'Home';
+                        });
                         Navigator.of(context).pop();
+                        Future.microtask(() {
+                          Routefly.push(routePaths.internal.home);
+                        });
                       },
                     ),
                     ListTile(
                       leading: const Icon(Icons.event),
-                      title: const Text('Events'),
+                      title: const Text('Overall'),
                       onTap: () {
+                        setState(() {
+                          _title = 'Overall';
+                        });
                         Navigator.of(context).pop();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Events page not added yet'),
-                          ),
-                        );
+                        Future.microtask(() {
+                          Routefly.push(routePaths.internal.aggregateEvents);
+                        });
                       },
                     ),
                     ListTile(
                       leading: const Icon(Icons.add),
                       title: const Text('Add event'),
                       onTap: () {
+                        setState(() {
+                          _title = 'Add event';
+                        });
                         Navigator.of(context).pop();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -110,7 +121,10 @@ class _InternalLayoutState extends State<InternalLayout> {
               ),
               InkWell(
                 onTap: () {
-                  Routefly.push(routePaths.userDetails);
+                  Navigator.of(context).pop();
+                  Future.microtask(() {
+                    Routefly.push(routePaths.userDetails);
+                  });
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(

@@ -8,6 +8,7 @@ class EventCard extends StatefulWidget {
   final UserEventData userEventData;
   final int? rank;
   final bool isRanked;
+  final bool isAverageScore;
 
   const EventCard({
     super.key,
@@ -15,6 +16,7 @@ class EventCard extends StatefulWidget {
     required this.userEventData,
     this.rank,
     this.isRanked = false,
+    this.isAverageScore = false,
   });
 
   @override
@@ -41,6 +43,9 @@ class _EventCardState extends State<EventCard> {
       (a, b) => a + b,
     );
     final maxScore = widget.userEventData.scores.length * 10;
+    final averageScore = widget.userEventData.scores.isEmpty
+        ? 0
+        : totalScore / widget.userEventData.scores.length;
 
     return GestureDetector(
       onTap: () {
@@ -125,8 +130,9 @@ class _EventCardState extends State<EventCard> {
                   ),
                 ),
                 Text(
-                  'Total score: '
-                  '$totalScore / $maxScore',
+                  widget.isAverageScore
+                      ? 'Average user score: ${averageScore.toStringAsFixed(1)}'
+                      : 'Total score: $totalScore / $maxScore',
                   style: const TextStyle(fontSize: 14),
                 ),
               ],
